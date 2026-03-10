@@ -1,9 +1,23 @@
-function App() {
+import { Routes, Route } from "react-router-dom";
+import MainLayout from "./layouts/MainLayout";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Projects from "./pages/Projects";
+import Skills from "./pages/Skills";
+import Contact from "./pages/Contact";
+
+export default function App() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-pink-100">
-      <h1 className="text-5xl font-bold text-pink-600">Tailwind Works!</h1>
-    </div>
+    <MainLayout>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/skills" element={<Skills />} />
+        <Route path="/contact" element={<Contact />} />
+         <Route path="/Home" element={<Home/>} />
+
+      </Routes>
+    </MainLayout>
   );
 }
-
-export default App;
