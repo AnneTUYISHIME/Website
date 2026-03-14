@@ -1,45 +1,21 @@
-import { motion } from "framer-motion";
-
 export default function Home() {
   return (
-    <section className="flex flex-col items-center justify-center text-center min-h-screen px-6">
-
-      {/* Animated Title */}
-      <motion.h1
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="text-5xl font-bold text-gray-800"
-      >
-        Hi, I'm <span className="text-pink-600">Anne Tuyishime</span>
-      </motion.h1>
-
-      {/* Subtitle */}
-      <motion.p
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5 }}
-        className="mt-6 text-lg text-gray-600 max-w-xl"
-      >
-        Software Developer | Flutter Developer | AI & IoT Enthusiast | Virtual Assistant
-      </motion.p>
-
-      {/* Buttons */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.8 }}
-        className="mt-8 flex gap-4"
-      >
-        <button className="bg-pink-500 hover:bg-pink-600 text-white px-6 py-3 rounded-2xl shadow-md transition">
+    <div className="min-h-[85vh] flex flex-col justify-center gap-5 py-16">
+      <p className="text-xs uppercase tracking-[.18em] text-[#f97316] font-semibold">Portfolio 2026</p>
+      <h1 className="text-5xl md:text-6xl font-bold leading-tight text-[#0c2a4a]">
+        Hi, I'm<br /><span className="text-[#f97316]">Anne Tuyishime</span>
+      </h1>
+      <p className="text-[#4a6080] text-base max-w-md leading-relaxed">
+        Software Developer · Flutter Developer · AI & IoT Enthusiast · Virtual Assistant
+      </p>
+      <div className="flex gap-4 flex-wrap mt-2">
+        <button className="bg-[#f97316] hover:bg-[#ea6c0a] text-white px-8 py-3 rounded-lg font-semibold transition-all">
           Download CV
         </button>
-
-        <button className="border border-pink-500 text-pink-600 hover:bg-pink-500 hover:text-white px-6 py-3 rounded-2xl transition">
+        <button className="border-2 border-[#0c2a4a] text-[#0c2a4a] hover:bg-[#0c2a4a] hover:text-white px-8 py-3 rounded-lg font-semibold transition-all">
           Hire Me
         </button>
-      </motion.div>
-
-    </section>
+      </div>
+    </div>
   );
 }

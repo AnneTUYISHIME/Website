@@ -1,31 +1,14 @@
 export default function Navbar() {
   return (
-    <nav className="fixed top-0 w-full bg-white/70 backdrop-blur-md shadow-md z-50">
-      <div className="max-w-6xl mx-auto flex justify-between items-center p-4">
-        
-        <h1 className="text-2xl font-bold text-pink-600">
-          Anne Portfolio
-        </h1>
-
-        <ul className="flex gap-6 text-gray-700 font-medium">
-          <li className="hover:text-pink-500 cursor-pointer">
-            <a href="#home">Home</a>
-          </li>
-          <li className="hover:text-pink-500 cursor-pointer">
-            <a href="#about">About</a>
-          </li>
-          <li className="hover:text-pink-500 cursor-pointer">
-            <a href="#projects">Projects</a>
-          </li>
-          <li className="hover:text-pink-500 cursor-pointer">
-            <a href="#skills">Skills</a>
-          </li>
-          <li className="hover:text-pink-500 cursor-pointer">
-            <a href="#contact">Contact</a>
-          </li>
-        </ul>
-
-      </div>
+    <nav className="sticky top-0 z-50 bg-[#0c2a4a] px-8 py-4 flex justify-between items-center">
+      <h1 className="text-[#f97316] font-bold text-xl tracking-wide">Anne T.</h1>
+      <ul className="flex gap-8 list-none text-sm font-medium text-slate-300">
+        <li><a href="#home" className="hover:text-[#f97316] transition-colors">Home</a></li>
+        <li><a href="#about" className="hover:text-[#f97316] transition-colors">About</a></li>
+        <li><a href="#projects" className="hover:text-[#f97316] transition-colors">Projects</a></li>
+        <li><a href="#skills" className="hover:text-[#f97316] transition-colors">Skills</a></li>
+        <li><a href="#contact" className="hover:text-[#f97316] transition-colors">Contact</a></li>
+      </ul>
     </nav>
   );
 }

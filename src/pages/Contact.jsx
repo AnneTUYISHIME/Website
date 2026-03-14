@@ -1,19 +1,23 @@
 export default function Contact() {
   return (
-    <section className="min-h-screen flex flex-col items-center justify-center text-center p-10">
-
-      <h2 className="text-3xl font-bold text-pink-600 mb-6">Contact Me</h2>
-
-      <p className="text-gray-600 mb-8">
-        Feel free to reach out if you want to work with me.
-      </p>
-
-      <div className="bg-white shadow-md rounded-xl p-6 w-full max-w-md">
-        <p className="mb-2">📧 atuyishime28@gmail.com</p>
-        <p className="mb-2">📱 0786544729</p>
-        <p>📍 Kigali, Rwanda</p>
+    <div className="bg-white rounded-2xl border border-blue-100 p-10 mb-8">
+      <h2 className="text-2xl font-bold text-[#0c2a4a] mb-1">Contact <span className="text-[#f97316]">Me</span></h2>
+      <p className="text-xs uppercase tracking-widest text-slate-400 mb-8">Let's work together</p>
+      <div className="flex flex-col gap-4 max-w-md">
+        {[
+          { icon: "📧", label: "Email", value: "atuyishime28@gmail.com" },
+          { icon: "📱", label: "Phone", value: "0786544729" },
+          { icon: "📍", label: "Location", value: "Kigali, Rwanda" },
+        ].map((item, i) => (
+          <div key={i} className="flex items-center gap-4 bg-[#f0f6ff] rounded-xl p-4 border border-blue-100">
+            <div className="w-10 h-10 rounded-full bg-[#0c2a4a] flex items-center justify-center text-base shrink-0">{item.icon}</div>
+            <div>
+              <p className="text-[10px] uppercase tracking-widest text-slate-400 mb-0.5">{item.label}</p>
+              <p className="text-sm font-semibold text-[#0c2a4a]">{item.value}</p>
+            </div>
+          </div>
+        ))}
       </div>
-
-    </section>
+    </div>
   );
 }
