@@ -1,17 +1,34 @@
-import React from "react";
+export default function Projects() {
+  const projects = [
+    {
+      title: "Baby Care App",
+      desc: "A Flutter application that helps parents track baby feeding, health and growth."
+    },
+    {
+      title: "Maize Yield Prediction",
+      desc: "AI + IoT system that predicts maize yield based on soil and weather data."
+    },
+    {
+      title: "Saving Cooperative System",
+      desc: "A web system that helps groups manage weekly savings digitally."
+    }
+  ];
 
-function Projects() {
   return (
-    <div className="p-10">
-      <h1 className="text-3xl font-bold">My Projects</h1>
+    <section className="min-h-screen p-10 text-center">
+      <h2 className="text-3xl font-bold text-pink-600 mb-8">My Projects</h2>
 
-      <ul className="mt-4 list-disc pl-6">
-        <li>Baby Care App (Flutter)</li>
-        <li>AI Maize Yield Prediction System</li>
-        <li>Expense Tracker Web Application</li>
-      </ul>
-    </div>
+      <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+        {projects.map((project, index) => (
+          <div
+            key={index}
+            className="bg-white shadow-lg rounded-xl p-6 hover:shadow-xl transition"
+          >
+            <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+            <p className="text-gray-600">{project.desc}</p>
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
-
-export default Projects;

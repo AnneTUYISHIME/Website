@@ -1,20 +1,29 @@
-import React from "react";
+export default function Skills() {
+  const skills = [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "React",
+    "Flutter",
+    "Node.js",
+    "AI & IoT",
+    "Git & GitHub"
+  ];
 
-function Skills() {
   return (
-    <div className="p-10">
-      <h1 className="text-3xl font-bold">My Skills</h1>
+    <section className="min-h-screen p-10 text-center">
+      <h2 className="text-3xl font-bold text-pink-600 mb-8">My Skills</h2>
 
-      <ul className="mt-4 list-disc pl-6">
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>JavaScript</li>
-        <li>React</li>
-        <li>Flutter</li>
-        <li>Git & GitHub</li>
-      </ul>
-    </div>
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto">
+        {skills.map((skill, index) => (
+          <div
+            key={index}
+            className="bg-white shadow-md rounded-xl p-6 hover:scale-105 transition"
+          >
+            {skill}
+          </div>
+        ))}
+      </div>
+    </section>
   );
 }
-
-export default Skills;

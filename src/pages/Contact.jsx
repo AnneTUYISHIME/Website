@@ -1,23 +1,19 @@
-import React from "react";
-
-function Contact() {
+export default function Contact() {
   return (
-    <div className="p-10">
-      <h1 className="text-3xl font-bold">Contact Me</h1>
+    <section className="min-h-screen flex flex-col items-center justify-center text-center p-10">
 
-      <p className="mt-4">
-        Email: atuyishime28@gmail.com
+      <h2 className="text-3xl font-bold text-pink-600 mb-6">Contact Me</h2>
+
+      <p className="text-gray-600 mb-8">
+        Feel free to reach out if you want to work with me.
       </p>
 
-      <p>
-        Phone: 0786544729
-      </p>
+      <div className="bg-white shadow-md rounded-xl p-6 w-full max-w-md">
+        <p className="mb-2">📧 atuyishime28@gmail.com</p>
+        <p className="mb-2">📱 0786544729</p>
+        <p>📍 Kigali, Rwanda</p>
+      </div>
 
-      <p>
-        LinkedIn: linkedin.com/in/anne-tuyishime
-      </p>
-    </div>
+    </section>
   );
 }
-
-export default Contact;
