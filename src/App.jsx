@@ -30,17 +30,10 @@ export default function App() {
     { name: "C", emoji: "🔵" },
   ];
 
-  const contacts = [
-    { icon: "📧", label: "Email", value: "atuyishime28@gmail.com" },
-    { icon: "📱", label: "Phone", value: "0786544729" },
-    { icon: "📍", label: "Location", value: "Kigali, Rwanda" },
-  ];
-
   return (
     <div style={{ fontFamily: "'Plus Jakarta Sans', sans-serif", background: "#f0f6ff", minHeight: "100vh", color: "#0c2a4a" }}>
 
       <nav style={{ background: "#0c2a4a", padding: "1rem 2.5rem", display: "flex", justifyContent: "space-between", alignItems: "center", position: "sticky", top: 0, zIndex: 99 }}>
-        <span style={{ color: "#f97316", fontWeight: 700, fontSize: "1.2rem" }}>Anne T.</span>
         <ul style={{ display: "flex", gap: "2rem", listStyle: "none", margin: 0, padding: 0 }}>
           <li>
             <a href="#home" style={{ color: "#cbd5e1", textDecoration: "none", fontSize: ".875rem", fontWeight: 500 }}
@@ -83,9 +76,7 @@ export default function App() {
       <div style={{ maxWidth: "900px", margin: "0 auto", padding: "0 2rem 4rem" }}>
 
         <section id="home" style={{ minHeight: "85vh", display: "flex", flexDirection: "column", justifyContent: "center", gap: "1.2rem", paddingTop: "2rem" }}>
-          <p style={{ fontSize: ".75rem", letterSpacing: ".18em", textTransform: "uppercase", color: "#f97316", fontWeight: 600 }}>
-            Portfolio 2026
-          </p>
+          
           <h1 style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)", fontWeight: 700, lineHeight: 1.1, color: "#0c2a4a" }}>
             Hi, I am
             <br />
@@ -201,20 +192,47 @@ export default function App() {
             Lets work together
           </p>
           <div style={{ display: "flex", flexDirection: "column", gap: "1rem", maxWidth: "460px" }}>
-            {contacts.map((c, i) => (
-              <div
-                key={i}
-                style={{ display: "flex", alignItems: "center", gap: "1rem", background: "#f0f6ff", borderRadius: "10px", padding: "1rem 1.25rem", border: "1px solid #bfdbfe" }}
-              >
-                <div style={{ width: "38px", height: "38px", borderRadius: "50%", background: "#0c2a4a", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1rem", flexShrink: 0 }}>
-                  {c.icon}
-                </div>
-                <div>
-                  <p style={{ fontSize: ".68rem", textTransform: "uppercase", letterSpacing: ".1em", color: "#94a3b8", marginBottom: ".15rem" }}>{c.label}</p>
-                  <p style={{ fontSize: ".9rem", fontWeight: 600, color: "#0c2a4a" }}>{c.value}</p>
-                </div>
+
+            <div style={{ display: "flex", alignItems: "center", gap: "1rem", background: "#f0f6ff", borderRadius: "10px", padding: "1rem 1.25rem", border: "1px solid #bfdbfe" }}>
+              <div style={{ width: "38px", height: "38px", borderRadius: "50%", background: "#0c2a4a", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1rem", flexShrink: 0 }}>📧</div>
+              <div>
+                <p style={{ fontSize: ".68rem", textTransform: "uppercase", letterSpacing: ".1em", color: "#94a3b8", marginBottom: ".15rem" }}>Email</p>
+                <p style={{ fontSize: ".9rem", fontWeight: 600, color: "#0c2a4a" }}>atuyishime28@gmail.com</p>
               </div>
-            ))}
+            </div>
+
+            <div style={{ display: "flex", alignItems: "center", gap: "1rem", background: "#f0f6ff", borderRadius: "10px", padding: "1rem 1.25rem", border: "1px solid #bfdbfe" }}>
+              <div style={{ width: "38px", height: "38px", borderRadius: "50%", background: "#0c2a4a", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1rem", flexShrink: 0 }}>📱</div>
+              <div>
+                <p style={{ fontSize: ".68rem", textTransform: "uppercase", letterSpacing: ".1em", color: "#94a3b8", marginBottom: ".15rem" }}>Phone</p>
+                <p style={{ fontSize: ".9rem", fontWeight: 600, color: "#0c2a4a" }}>0786544729</p>
+              </div>
+            </div>
+
+            <div style={{ display: "flex", alignItems: "center", gap: "1rem", background: "#f0f6ff", borderRadius: "10px", padding: "1rem 1.25rem", border: "1px solid #bfdbfe" }}>
+              <div style={{ width: "38px", height: "38px", borderRadius: "50%", background: "#0c2a4a", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1rem", flexShrink: 0 }}>📍</div>
+              <div>
+                <p style={{ fontSize: ".68rem", textTransform: "uppercase", letterSpacing: ".1em", color: "#94a3b8", marginBottom: ".15rem" }}>Location</p>
+                <p style={{ fontSize: ".9rem", fontWeight: 600, color: "#0c2a4a" }}>Kigali, Rwanda</p>
+              </div>
+            </div>
+
+            <div style={{ display: "flex", alignItems: "center", gap: "1rem", background: "#f0f6ff", borderRadius: "10px", padding: "1rem 1.25rem", border: "1px solid #bfdbfe" }}>
+              <div style={{ width: "38px", height: "38px", borderRadius: "50%", background: "#0c2a4a", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1rem", flexShrink: 0 }}>💼</div>
+              <div>
+                <p style={{ fontSize: ".68rem", textTransform: "uppercase", letterSpacing: ".1em", color: "#94a3b8", marginBottom: ".15rem" }}>LinkedIn</p>
+                <a href="https://linkedin.com/in/anne-tuyishime" target="_blank" rel="noreferrer" style={{ fontSize: ".9rem", fontWeight: 600, color: "#0c2a4a", textDecoration: "none" }}>anne-tuyishime</a>
+              </div>
+            </div>
+
+            <div style={{ display: "flex", alignItems: "center", gap: "1rem", background: "#f0f6ff", borderRadius: "10px", padding: "1rem 1.25rem", border: "1px solid #bfdbfe" }}>
+              <div style={{ width: "38px", height: "38px", borderRadius: "50%", background: "#0c2a4a", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1rem", flexShrink: 0 }}>🐙</div>
+              <div>
+                <p style={{ fontSize: ".68rem", textTransform: "uppercase", letterSpacing: ".1em", color: "#94a3b8", marginBottom: ".15rem" }}>GitHub</p>
+                <a href="https://github.com/AnneTUYISHIME" target="_blank" rel="noreferrer" style={{ fontSize: ".9rem", fontWeight: 600, color: "#0c2a4a", textDecoration: "none" }}>AnneTUYISHIME</a>
+              </div>
+            </div>
+
           </div>
         </section>
 
