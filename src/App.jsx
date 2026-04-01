@@ -52,8 +52,12 @@ export default function App() {
 
       
 
-      {/* NAVBAR */}
-      <nav style={{ background: t.nav, padding: "1rem 2.5rem", display: "flex", justifyContent: "space-between", alignItems: "center", position: "sticky", top: 0, zIndex: 99, borderBottom: "1px solid " + t.navBorder, transition: "all .3s" }}>
+ <nav style={{ background: t.nav, padding: "1rem 2.5rem", display: "flex", justifyContent: "space-between", alignItems: "center", position: "sticky", top: 0, zIndex: 99, borderBottom: "1px solid " + t.navBorder, transition: "all .3s" }}>
+  
+  <span style={{ color: "#f97316", fontWeight: 700, fontSize: "1.1rem", letterSpacing: ".05em" }}>
+    Anne <span style={{ color: "white" }}>TUYISHIME</span>
+  </span>
+
   <ul style={{ display: "flex", gap: ".5rem", listStyle: "none", margin: 0, padding: 0 }}>
     <li>
       <a href="#home" style={{ color: "white", textDecoration: "none", fontSize: ".875rem", fontWeight: 600, padding: ".5rem 1.2rem", borderRadius: "50px", transition: "all .2s", display: "inline-block" }}
@@ -91,6 +95,7 @@ export default function App() {
       </a>
     </li>
   </ul>
+
   <button
     onClick={() => setDark(!dark)}
     style={{ background: dark ? "#f97316" : "rgba(255,255,255,0.1)", color: "white", border: "1px solid rgba(255,255,255,0.2)", borderRadius: "50px", padding: ".45rem 1rem", cursor: "pointer", fontFamily: "inherit", fontSize: ".85rem", fontWeight: 600, display: "flex", alignItems: "center", gap: ".4rem", transition: "all .2s" }}
@@ -99,6 +104,7 @@ export default function App() {
   >
     {dark ? "☀️ Light" : "🌙 Dark"}
   </button>
+
 </nav>
 
       <div style={{ maxWidth: "900px", margin: "0 auto", padding: "0 2rem 4rem" }}>
@@ -125,13 +131,11 @@ export default function App() {
             </div>
             <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
               <h1 style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)", fontWeight: 700, lineHeight: 1.1, color: t.text }}>
-                Hi, I am
+                
                 <br />
                 <span style={{ color: "#f97316" }}>Anne Tuyishime</span>
               </h1>
-              <p style={{ color: t.muted, fontSize: "1rem", maxWidth: "460px", lineHeight: 1.8 }}>
-                Software Developer · Flutter Developer · AI and IoT Enthusiast · Virtual Assistant based in Kigali, Rwanda.
-              </p>
+              
               <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
                 <button
                   style={{ background: "#f97316", color: "white", border: "none", padding: ".75rem 2rem", borderRadius: "8px", fontFamily: "inherit", fontSize: ".9rem", fontWeight: 600, cursor: "pointer" }}
@@ -140,13 +144,7 @@ export default function App() {
                 >
                   Download CV
                 </button>
-                <button
-                  style={{ background: "transparent", color: t.text, border: "2px solid " + t.text, padding: ".75rem 2rem", borderRadius: "8px", fontFamily: "inherit", fontSize: ".9rem", fontWeight: 600, cursor: "pointer" }}
-                  onMouseEnter={(e) => { e.currentTarget.style.background = "#f97316"; e.currentTarget.style.color = "white"; e.currentTarget.style.borderColor = "#f97316"; }}
-                  onMouseLeave={(e) => { e.currentTarget.style.background = "transparent"; e.currentTarget.style.color = t.text; e.currentTarget.style.borderColor = t.text; }}
-                >
-                  Hire Me
-                </button>
+               
               </div>
             </div>
           </div>
@@ -263,8 +261,9 @@ export default function App() {
               <div style={{ width: "38px", height: "38px", borderRadius: "50%", background: "#0c2a4a", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1rem", flexShrink: 0 }}>🐙</div>
               <div>
                 <p style={{ fontSize: ".68rem", textTransform: "uppercase", letterSpacing: ".1em", color: t.label, marginBottom: ".15rem" }}>GitHub</p>
-                <a href="https://github.com/AnneTUYISHIME" target="_blank" rel="noreferrer" style={{ fontSize: ".9rem", fontWeight: 600, color: t.text, textDecoration: "none" }}>AnneTUYISHIME</a>
-              </div>
+<a href="https://github.com/AnneTUYISHIME" target="_blank" rel="noreferrer" style={{ fontSize: ".9rem", fontWeight: 600, color: t.text, textDecoration: "none" }}>
+  AnneTUYISHIME
+</a>              </div>
             </div>
 
           </div>
