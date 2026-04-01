@@ -105,7 +105,6 @@ export default function App() {
 
         <section id="home" style={{ minHeight: "85vh", display: "flex", flexDirection: "column", justifyContent: "center", paddingTop: "2rem" }}>
           <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: "2rem", flexWrap: "wrap" }}>
-
             <div style={{ display: "flex", flexDirection: "column", gap: "1rem", flex: 1 }}>
               <h1 style={{ fontSize: "clamp(2.5rem, 6vw, 4rem)", fontWeight: 700, lineHeight: 1.1, color: t.text }}>
                 Hi, I am
@@ -125,7 +124,6 @@ export default function App() {
                 </button>
               </div>
             </div>
-
             <div style={{ flexShrink: 0 }}>
               <img
                 src="/profile.jpg"
@@ -143,7 +141,6 @@ export default function App() {
                 AT
               </div>
             </div>
-
           </div>
         </section>
 
@@ -154,41 +151,22 @@ export default function App() {
           <p style={{ fontSize: ".72rem", textTransform: "uppercase", letterSpacing: ".12em", color: t.label, marginBottom: "2rem" }}>
             Who I am
           </p>
-          <div style={{ display: "flex", gap: "2rem", alignItems: "center", flexWrap: "wrap" }}>
-            <div style={{ color: t.muted, fontSize: ".92rem", lineHeight: 1.85, flex: 1 }}>
-              <p>
-                I am <strong style={{ color: t.text }}>Anne Tuyishime</strong>, a passionate and motivated software development student with a strong interest in building modern, user-friendly web and mobile applications that solve real-world problems.
-              </p>
-              <p style={{ marginTop: ".75rem" }}>
-                I have experience working with technologies such as HTML, CSS, and JavaScript, and I am currently expanding my skills in React, Flutter, and backend development. I enjoy creating responsive and visually appealing interfaces, as well as designing structured and efficient databases.
-              </p>
-              <p style={{ marginTop: ".75rem" }}>
-                One of my key interests is integrating technology with real-life solutions. I am currently working on projects such as an AI-based maize yield prediction system and a Baby Care mobile application, where I apply both technical and creative problem-solving skills.
-              </p>
-              <p style={{ marginTop: ".75rem" }}>
-                I am a fast learner, detail-oriented, and enjoy working both independently and as part of a team. I am always eager to learn new technologies, improve my skills, and take on new challenges that help me grow as a developer.
-              </p>
-              <p style={{ marginTop: ".75rem" }}>
-                My goal is to become a skilled full-stack developer and contribute to innovative solutions that make a positive impact in my community and beyond.
-              </p>
-            </div>
-            <div style={{ flexShrink: 0 }}>
-              <img
-                src="/profile.jpg"
-                alt="Anne Tuyishime"
-                style={{ width: "150px", height: "150px", borderRadius: "50%", objectFit: "cover", border: "4px solid #f97316" }}
-                onError={(e) => {
-                  e.target.style.display = "none";
-                  document.getElementById("about-avatar-fallback").style.display = "flex";
-                }}
-              />
-              <div
-                id="about-avatar-fallback"
-                style={{ width: "150px", height: "150px", borderRadius: "50%", background: "#0c2a4a", display: "none", alignItems: "center", justifyContent: "center", fontSize: "2rem", fontWeight: 700, color: "#f97316", border: "4px solid #f97316" }}
-              >
-                AT
-              </div>
-            </div>
+          <div style={{ color: t.muted, fontSize: ".92rem", lineHeight: 1.85 }}>
+            <p>
+              I am <strong style={{ color: t.text }}>Anne Tuyishime</strong>, a passionate and motivated software development student with a strong interest in building modern, user-friendly web and mobile applications that solve real-world problems.
+            </p>
+            <p style={{ marginTop: ".75rem" }}>
+              I have experience working with technologies such as HTML, CSS, and JavaScript, and I am currently expanding my skills in React, Flutter, and backend development. I enjoy creating responsive and visually appealing interfaces, as well as designing structured and efficient databases.
+            </p>
+            <p style={{ marginTop: ".75rem" }}>
+              One of my key interests is integrating technology with real-life solutions. I am currently working on projects such as an AI-based maize yield prediction system and a Baby Care mobile application, where I apply both technical and creative problem-solving skills.
+            </p>
+            <p style={{ marginTop: ".75rem" }}>
+              I am a fast learner, detail-oriented, and enjoy working both independently and as part of a team. I am always eager to learn new technologies, improve my skills, and take on new challenges that help me grow as a developer.
+            </p>
+            <p style={{ marginTop: ".75rem" }}>
+              My goal is to become a skilled full-stack developer and contribute to innovative solutions that make a positive impact in my community and beyond.
+            </p>
           </div>
         </section>
 
