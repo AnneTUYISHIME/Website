@@ -1,3 +1,4 @@
+import API from "./api";
 import { useEffect, useState } from "react";
 
 export default function App() {
@@ -6,6 +7,7 @@ export default function App() {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [sent, setSent] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const link = document.createElement("link");
@@ -51,12 +53,27 @@ export default function App() {
     { name: "C", emoji: "🔵" },
   ];
 
-  function handleSend() {
+  async function handleSend() {
     if (name && email && message) {
-      setSent(true);
-      setName("");
-      setEmail("");
-      setMessage("");
+      setLoading(true);
+      try {
+        await API.post("/api/contact/send", {
+          name: name,
+          email: email,
+          message: message,
+        });
+        setSent(true);
+        setName("");
+        setEmail("");
+        setMessage("");
+      } catch (error) {
+        console.error("Error sending message:", error);
+        alert("Failed to send message. Please try again.");
+      } finally {
+        setLoading(false);
+      }
+    } else {
+      alert("Please fill in all fields!");
     }
   }
 
@@ -337,11 +354,12 @@ export default function App() {
 
               <button
                 onClick={handleSend}
-                style={{ background: "#f97316", color: "white", border: "none", padding: ".75rem 2rem", borderRadius: "8px", fontFamily: "inherit", fontSize: ".9rem", fontWeight: 600, cursor: "pointer", transition: "background .2s" }}
-                onMouseEnter={(e) => { e.target.style.background = "#ea6c0a"; }}
-                onMouseLeave={(e) => { e.target.style.background = "#f97316"; }}
+                disabled={loading}
+                style={{ background: loading ? "#94a3b8" : "#f97316", color: "white", border: "none", padding: ".75rem 2rem", borderRadius: "8px", fontFamily: "inherit", fontSize: ".9rem", fontWeight: 600, cursor: loading ? "not-allowed" : "pointer", transition: "background .2s" }}
+                onMouseEnter={(e) => { if (!loading) e.target.style.background = "#ea6c0a"; }}
+                onMouseLeave={(e) => { if (!loading) e.target.style.background = "#f97316"; }}
               >
-                Send Message
+                {loading ? "Sending..." : "Send Message"}
               </button>
 
             </div>
@@ -350,11 +368,15 @@ export default function App() {
         </section>
 
       </div>
+      
+
+      // ... ALL YOUR CODE ABOVE REMAINS EXACTLY THE SAME
 
       <footer style={{ textAlign: "center", padding: "1.5rem", fontSize: ".8rem", color: t.label, borderTop: "1px solid " + t.footerBorder, background: t.footer, transition: "all .3s" }}>
         2026 <span style={{ color: "#f97316", fontWeight: 600 }}>Anne Tuyishime</span>. All rights reserved.
       </footer>
 
     </div>
+    
   );
 }
