@@ -370,7 +370,7 @@ export default function App() {
       </div>
       
 
-      // ... ALL YOUR CODE ABOVE REMAINS EXACTLY THE SAME
+    
 
       <footer style={{ textAlign: "center", padding: "1.5rem", fontSize: ".8rem", color: t.label, borderTop: "1px solid " + t.footerBorder, background: t.footer, transition: "all .3s" }}>
         2026 <span style={{ color: "#f97316", fontWeight: 600 }}>Anne Tuyishime</span>. All rights reserved.
