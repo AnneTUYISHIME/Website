@@ -8,6 +8,8 @@ export default function App() {
   const [message, setMessage] = useState("");
   const [sent, setSent] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [profileUrl, setProfileUrl] = useState("");
+  const [cvUrl, setCvUrl] = useState("");
 
   useEffect(() => {
     const link = document.createElement("link");
@@ -15,6 +17,20 @@ export default function App() {
     link.rel = "stylesheet";
     document.head.appendChild(link);
   }, []);
+
+ useEffect(() => {
+  const savedImage = localStorage.getItem("profileImage");
+  if (savedImage) {
+    setProfileUrl(savedImage);
+  }
+
+  API.get("/api/upload/profile-url")
+    .then((res) => setProfileUrl(res.data.url))
+    .catch((e) => console.log("Profile error:", e));
+  API.get("/api/upload/cv-url")
+    .then((res) => setCvUrl(res.data.url))
+    .catch((e) => console.log("CV error:", e));
+}, []);
 
   const t = {
     bg: dark ? "#0f172a" : "#f0f6ff",
@@ -125,8 +141,7 @@ export default function App() {
           onClick={() => setDark(!dark)}
           style={{ background: dark ? "#f97316" : "rgba(255,255,255,0.1)", color: "white", border: "1px solid rgba(255,255,255,0.2)", borderRadius: "50px", padding: ".45rem 1rem", cursor: "pointer", fontFamily: "inherit", fontSize: ".85rem", fontWeight: 600, display: "flex", alignItems: "center", gap: ".4rem", transition: "all .2s" }}
           onMouseEnter={(e) => { e.currentTarget.style.background = "#f97316"; }}
-          onMouseLeave={(e) => { e.currentTarget.style.background = dark ? "#f97316" : "rgba(255,255,255,0.1)"; }}
-        >
+          onMouseLeave={(e) => { e.currentTarget.style.background = dark ? "#f97316" : "rgba(255,255,255,0.1)"; }}>
           {dark ? "☀️ Light" : "🌙 Dark"}
         </button>
       </nav>
@@ -142,21 +157,33 @@ export default function App() {
                 <span style={{ color: "#f97316" }}>Anne Tuyishime</span>
               </h1>
               <p style={{ color: t.muted, fontSize: "1rem", maxWidth: "460px", lineHeight: 1.8 }}>
-                Software Developer · Flutter Developer · AI and IoT Enthusiast · Virtual Assistant based in Kigali, Rwanda.
-              </p>
-              <div style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}>
-                <button
-                  style={{ background: "#f97316", color: "white", border: "none", padding: ".75rem 2rem", borderRadius: "8px", fontFamily: "inherit", fontSize: ".9rem", fontWeight: 600, cursor: "pointer" }}
-                  onMouseEnter={(e) => { e.target.style.background = "#ea6c0a"; }}
-                  onMouseLeave={(e) => { e.target.style.background = "#f97316"; }}
-                >
-                  Download CV
-                </button>
-              </div>
+  Software Developer · Flutter Developer · AI and IoT Enthusiast · Virtual Assistant based in Kigali, Rwanda.
+</p>
+
+<a
+  href={cvUrl || "#"}
+  target="_blank"
+  rel="noreferrer"
+  style={{
+    background: "#f97316",
+    color: "white",
+    padding: ".75rem 2rem",
+    borderRadius: "8px",
+    fontSize: ".9rem",
+    fontWeight: 600,
+    textDecoration: "none",
+    display: "inline-block",
+    width: "fit-content",
+  }}
+  onMouseEnter={(e) => { e.target.style.background = "#ea6c0a"; }}
+  onMouseLeave={(e) => { e.target.style.background = "#f97316"; }}
+>
+  Download CV
+</a>
             </div>
             <div style={{ flexShrink: 0 }}>
               <img
-                src="/profile.jpg"
+                src={profileUrl || "/profile.jpg"}
                 alt="Anne Tuyishime"
                 style={{ width: "180px", height: "180px", borderRadius: "50%", objectFit: "cover", border: "4px solid #f97316" }}
                 onError={(e) => {
@@ -166,8 +193,7 @@ export default function App() {
               />
               <div
                 id="home-avatar-fallback"
-                style={{ width: "180px", height: "180px", borderRadius: "50%", background: "#0c2a4a", display: "none", alignItems: "center", justifyContent: "center", fontSize: "2.5rem", fontWeight: 700, color: "#f97316", border: "4px solid #f97316" }}
-              >
+                style={{ width: "180px", height: "180px", borderRadius: "50%", background: "#0c2a4a", display: "none", alignItems: "center", justifyContent: "center", fontSize: "2.5rem", fontWeight: 700, color: "#f97316", border: "4px solid #f97316" }}>
                 AT
               </div>
             </div>
@@ -213,8 +239,7 @@ export default function App() {
                 key={i}
                 style={{ background: t.innerCard, borderRadius: "12px", padding: "1.5rem", border: "1px solid " + t.innerBorder, transition: "transform .2s" }}
                 onMouseEnter={(e) => { e.currentTarget.style.transform = "translateY(-4px)"; e.currentTarget.style.boxShadow = "0 8px 24px rgba(0,0,0,0.15)"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}
-              >
+                onMouseLeave={(e) => { e.currentTarget.style.transform = "translateY(0)"; e.currentTarget.style.boxShadow = "none"; }}>
                 <div style={{ fontSize: "1.8rem", marginBottom: ".75rem" }}>{p.emoji}</div>
                 <h3 style={{ fontWeight: 700, fontSize: "1rem", color: t.text, marginBottom: ".4rem" }}>{p.title}</h3>
                 <p style={{ fontSize: ".85rem", color: t.muted, lineHeight: 1.7 }}>{p.desc}</p>
@@ -236,8 +261,7 @@ export default function App() {
                 key={i}
                 style={{ background: t.innerCard, border: "1px solid " + t.innerBorder, borderRadius: "10px", padding: "1rem", textAlign: "center", cursor: "default", transition: "transform .2s" }}
                 onMouseEnter={(e) => { e.currentTarget.style.borderColor = "#f97316"; e.currentTarget.style.transform = "translateY(-2px)"; }}
-                onMouseLeave={(e) => { e.currentTarget.style.borderColor = t.innerBorder; e.currentTarget.style.transform = "translateY(0)"; }}
-              >
+                onMouseLeave={(e) => { e.currentTarget.style.borderColor = t.innerBorder; e.currentTarget.style.transform = "translateY(0)"; }}>
                 <div style={{ fontSize: "1.5rem", marginBottom: ".4rem" }}>{s.emoji}</div>
                 <p style={{ fontSize: ".85rem", fontWeight: 600, color: t.text }}>{s.name}</p>
               </div>
@@ -252,11 +276,8 @@ export default function App() {
           <p style={{ fontSize: ".72rem", textTransform: "uppercase", letterSpacing: ".12em", color: t.label, marginBottom: "2rem" }}>
             Lets work together
           </p>
-
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "2rem" }}>
-
             <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-
               <div style={{ display: "flex", alignItems: "center", gap: "1rem", background: t.innerCard, borderRadius: "10px", padding: "1rem 1.25rem", border: "1px solid " + t.innerBorder }}>
                 <div style={{ width: "38px", height: "38px", borderRadius: "50%", background: "#0c2a4a", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1rem", flexShrink: 0 }}>📧</div>
                 <div>
@@ -264,7 +285,6 @@ export default function App() {
                   <p style={{ fontSize: ".9rem", fontWeight: 600, color: t.text }}>atuyishime28@gmail.com</p>
                 </div>
               </div>
-
               <div style={{ display: "flex", alignItems: "center", gap: "1rem", background: t.innerCard, borderRadius: "10px", padding: "1rem 1.25rem", border: "1px solid " + t.innerBorder }}>
                 <div style={{ width: "38px", height: "38px", borderRadius: "50%", background: "#0c2a4a", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1rem", flexShrink: 0 }}>📱</div>
                 <div>
@@ -272,7 +292,6 @@ export default function App() {
                   <p style={{ fontSize: ".9rem", fontWeight: 600, color: t.text }}>0786544729</p>
                 </div>
               </div>
-
               <div style={{ display: "flex", alignItems: "center", gap: "1rem", background: t.innerCard, borderRadius: "10px", padding: "1rem 1.25rem", border: "1px solid " + t.innerBorder }}>
                 <div style={{ width: "38px", height: "38px", borderRadius: "50%", background: "#0c2a4a", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1rem", flexShrink: 0 }}>📍</div>
                 <div>
@@ -280,39 +299,28 @@ export default function App() {
                   <p style={{ fontSize: ".9rem", fontWeight: 600, color: t.text }}>Kigali, Rwanda</p>
                 </div>
               </div>
-
               <div style={{ display: "flex", alignItems: "center", gap: "1rem", background: t.innerCard, borderRadius: "10px", padding: "1rem 1.25rem", border: "1px solid " + t.innerBorder }}>
                 <div style={{ width: "38px", height: "38px", borderRadius: "50%", background: "#0c2a4a", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1rem", flexShrink: 0 }}>💼</div>
                 <div>
                   <p style={{ fontSize: ".68rem", textTransform: "uppercase", letterSpacing: ".1em", color: t.label, marginBottom: ".15rem" }}>LinkedIn</p>
-                  <a href="https://linkedin.com/in/anne-tuyishime" target="_blank" rel="noreferrer" style={{ fontSize: ".9rem", fontWeight: 600, color: t.text, textDecoration: "none" }}>
-                    anne-tuyishime
-                  </a>
+                  <a href="https://linkedin.com/in/anne-tuyishime" target="_blank" rel="noreferrer" style={{ fontSize: ".9rem", fontWeight: 600, color: t.text, textDecoration: "none" }}>anne-tuyishime</a>
                 </div>
               </div>
-
               <div style={{ display: "flex", alignItems: "center", gap: "1rem", background: t.innerCard, borderRadius: "10px", padding: "1rem 1.25rem", border: "1px solid " + t.innerBorder }}>
                 <div style={{ width: "38px", height: "38px", borderRadius: "50%", background: "#0c2a4a", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "1rem", flexShrink: 0 }}>🐙</div>
                 <div>
                   <p style={{ fontSize: ".68rem", textTransform: "uppercase", letterSpacing: ".1em", color: t.label, marginBottom: ".15rem" }}>GitHub</p>
-                  <a href="https://github.com/AnneTUYISHIME" target="_blank" rel="noreferrer" style={{ fontSize: ".9rem", fontWeight: 600, color: t.text, textDecoration: "none" }}>
-                    AnneTUYISHIME
-                  </a>
+                  <a href="https://github.com/AnneTUYISHIME" target="_blank" rel="noreferrer" style={{ fontSize: ".9rem", fontWeight: 600, color: t.text, textDecoration: "none" }}>AnneTUYISHIME</a>
                 </div>
               </div>
-
             </div>
-
             <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-
               <p style={{ fontSize: ".85rem", fontWeight: 600, color: t.text }}>Send me a message</p>
-
               {sent && (
                 <div style={{ background: "#dcfce7", border: "1px solid #86efac", borderRadius: "8px", padding: ".75rem 1rem", fontSize: ".85rem", color: "#166534", fontWeight: 600 }}>
                   Message sent successfully! I will get back to you soon.
                 </div>
               )}
-
               <div style={{ display: "flex", flexDirection: "column", gap: ".4rem" }}>
                 <label style={{ fontSize: ".72rem", textTransform: "uppercase", letterSpacing: ".1em", color: t.label }}>Your Name</label>
                 <input
@@ -325,7 +333,6 @@ export default function App() {
                   onBlur={(e) => { e.target.style.borderColor = t.innerBorder; }}
                 />
               </div>
-
               <div style={{ display: "flex", flexDirection: "column", gap: ".4rem" }}>
                 <label style={{ fontSize: ".72rem", textTransform: "uppercase", letterSpacing: ".1em", color: t.label }}>Your Email</label>
                 <input
@@ -338,7 +345,6 @@ export default function App() {
                   onBlur={(e) => { e.target.style.borderColor = t.innerBorder; }}
                 />
               </div>
-
               <div style={{ display: "flex", flexDirection: "column", gap: ".4rem" }}>
                 <label style={{ fontSize: ".72rem", textTransform: "uppercase", letterSpacing: ".1em", color: t.label }}>Message</label>
                 <textarea
@@ -351,32 +357,24 @@ export default function App() {
                   onBlur={(e) => { e.target.style.borderColor = t.innerBorder; }}
                 />
               </div>
-
               <button
                 onClick={handleSend}
                 disabled={loading}
                 style={{ background: loading ? "#94a3b8" : "#f97316", color: "white", border: "none", padding: ".75rem 2rem", borderRadius: "8px", fontFamily: "inherit", fontSize: ".9rem", fontWeight: 600, cursor: loading ? "not-allowed" : "pointer", transition: "background .2s" }}
                 onMouseEnter={(e) => { if (!loading) e.target.style.background = "#ea6c0a"; }}
-                onMouseLeave={(e) => { if (!loading) e.target.style.background = "#f97316"; }}
-              >
+                onMouseLeave={(e) => { if (!loading) e.target.style.background = "#f97316"; }}>
                 {loading ? "Sending..." : "Send Message"}
               </button>
-
             </div>
-
           </div>
         </section>
 
       </div>
-      
-
-    
 
       <footer style={{ textAlign: "center", padding: "1.5rem", fontSize: ".8rem", color: t.label, borderTop: "1px solid " + t.footerBorder, background: t.footer, transition: "all .3s" }}>
         2026 <span style={{ color: "#f97316", fontWeight: 600 }}>Anne Tuyishime</span>. All rights reserved.
       </footer>
 
     </div>
-    
   );
 }

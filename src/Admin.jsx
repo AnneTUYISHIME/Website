@@ -22,7 +22,10 @@ export default function Admin() {
     try {
       const res = await API.post("/api/upload/profile", formData, {
         headers: { "Content-Type": "multipart/form-data" },
+        
       });
+localStorage.setItem("profileImage", res.data.url);   // ✅ ADD THIS LINE
+
       setProfileMsg("Success! URL: " + res.data.url);
     } catch (e) {
       setProfileMsg("Failed: " + (e.response?.data?.message || e.message));
@@ -44,6 +47,8 @@ export default function Admin() {
       const res = await API.post("/api/upload/cv", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
+      localStorage.setItem("cvFile", res.data.url);   // ✅ ADD THIS LINE
+
       setCvMsg("Success! URL: " + res.data.url);
     } catch (e) {
       setCvMsg("Failed: " + (e.response?.data?.message || e.message));
